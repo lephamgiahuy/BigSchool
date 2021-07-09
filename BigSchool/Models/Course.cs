@@ -11,6 +11,8 @@ namespace BigSchool.Models
     {
         public int Id { get; set; }
 
+        public string Name;  // thêm
+
         [Required]
         [StringLength(128)]
         public string LecturerId { get; set; }
@@ -23,10 +25,12 @@ namespace BigSchool.Models
 
         public int CategoryId { get; set; }
 
+        public virtual AspNetUser AspNetUser { get; set; }
+
         public virtual Category Category { get; set; }
 
-        public string Name;
+        public string LectureName;
 
-        public List<Category> ListCategory = new List<Category>();
+        public List<Category> ListCategory = new List<Category>();   // thêm
     }
 }

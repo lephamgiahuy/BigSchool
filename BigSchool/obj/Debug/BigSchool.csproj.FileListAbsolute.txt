@@ -80,3 +80,9 @@ c:\users\-_-\documents\visual studio 2015\Projects\BigSchool\BigSchool\bin\Micro
 c:\users\-_-\documents\visual studio 2015\Projects\BigSchool\BigSchool\obj\Debug\BigSchool.csprojResolveAssemblyReference.cache
 c:\users\-_-\documents\visual studio 2015\Projects\BigSchool\BigSchool\obj\Debug\BigSchool.dll
 c:\users\-_-\documents\visual studio 2015\Projects\BigSchool\BigSchool\obj\Debug\BigSchool.pdb
+C:\Users\-_-\Documents\Visual Studio 2015\Projects\BigSchool\BigSchool\bin\System.Net.Http.Formatting.dll
+C:\Users\-_-\Documents\Visual Studio 2015\Projects\BigSchool\BigSchool\bin\System.Web.Http.dll
+C:\Users\-_-\Documents\Visual Studio 2015\Projects\BigSchool\BigSchool\bin\System.Web.Http.WebHost.dll
+C:\Users\-_-\Documents\Visual Studio 2015\Projects\BigSchool\BigSchool\bin\System.Net.Http.Formatting.xml
+C:\Users\-_-\Documents\Visual Studio 2015\Projects\BigSchool\BigSchool\bin\System.Web.Http.xml
+C:\Users\-_-\Documents\Visual Studio 2015\Projects\BigSchool\BigSchool\bin\System.Web.Http.WebHost.xml
