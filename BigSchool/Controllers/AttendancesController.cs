@@ -11,12 +11,11 @@ namespace BigSchool.Controllers
 {
     public class AttendancesController : ApiController
     {
-
         [HttpPost]
         public IHttpActionResult Attend(Course attendanceDto)
         {
             var userID = User.Identity.GetUserId();
-            BigSchoolDB con = new BigSchoolDB();
+            BigSchoolContext con = new BigSchoolContext();
             if (con.Attendances.Any(p => p.Attendee == userID && p.CourseId == attendanceDto.Id))
             {
                 return BadRequest("The attendance already exists!");

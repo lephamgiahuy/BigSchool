@@ -22,60 +22,51 @@ select,
 textarea {
     max-width: 280px;
 }
-
-.navbar-inverse {
+.navbar-inverse 
+{
     background-color: yellow;
-    border-color: Highlight;
+    border-color: lightblue;
 }
 
 .navbar-inverse .navbar-nav > li > a {
         color: red;
-}
+    }
 
 .navbar-inverse .navbar-brand > li > a {
-        color: white;
-}
-
-/* course layout*/
-.course{
-    list-style:none;
-}
-
-.course > li{
+        color: orange;
+    }
+ .course{
+     list-style:none;
+ }
+.course >li {
     position:relative;
     margin-bottom:30px;
 }
+    .course > li .date {
+        text-align: center;
+        background-color: grey;
+        color: white;
+        width: 60px;
+        border-radius: 8px;
+    }
 
-.course > li .date{
-    text-align:center;
-    background-color: cyan;
-    color:white;
-    width:60px;
-    border-radius:8px;
-}
+    .course > li .details {
+        position: absolute;
+        top: 0;
+        left: 70px;
+    }
 
-.course > li .details{
-    position:absolute;
-    top:0;
-    left:70px;
-}
+    .course > li .lecture {
+    }
+    .course > li .category {
+    }
 
-.course > li .lecture{
+    .course > li .action {
+        display: none;
+        left: 70px;
+        position: absolute;
+    }
 
-}
-
-.course > li .category{
-
-}
-
-.course > li .action{
-    display:none;
-    left:70px;
-    position:absolute;
-}
-
-.course > li:hover .action{
-    display:block;
-}
-
-
+    .course > li:hover .action {
+        display: block;
+    }

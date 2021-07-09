@@ -9,61 +9,67 @@ using System.Web.Mvc;
 
 namespace BigSchool.Controllers
 {
-    public class CourseController : Controller
+    public class CoursesController : Controller
     {
-        // GET: Course
+        // GET: Courses
         public ActionResult Create()
         {
-            // GET list categoty
-            BigSchoolDB context = new BigSchoolDB();
+            //get list category
+            BigSchoolContext context = new BigSchoolContext();
             Course objCourse = new Course();
             objCourse.ListCategory = context.Categories.ToList();
-
             return View(objCourse);
         }
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Course objcourse)
         {
-            BigSchoolDB context = new BigSchoolDB();
+            BigSchoolContext con = new BigSchoolContext();
 
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-
-            objcourse.LecturerId = user.Id;
-            context.Courses.Add(objcourse);
-
-            context.SaveChanges();
-            return RedirectToAction("Index", "Home");
-        }
-      
-        public ActionResult Attending()
-        {
-            BigSchoolDB context = new BigSchoolDB();
-            ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-
-            var listAttendances = context.Attendances.Where(p => p.Attendee == currentUser.Id).ToList();
-            var courses = new List<Course>();
-            foreach (Attendance temp in listAttendances)
+            ModelState.Remove("LectureId");
+            if (!ModelState.IsValid)
             {
-                Course objCourse = temp.Course;
-                objCourse.LectureName = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(objCourse.LecturerId).Name;
-                courses.Add(objCourse);
+                objcourse.ListCategory = con.Categories.ToList();
+                return View("Create", objcourse);
             }
 
-            return View(courses);
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            objcourse.LectureId = user.Id;
 
+            con.Courses.Add(objcourse);
+            con.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
+
+
+        public ActionResult Attending()
+        {
+            BigSchoolContext con = new BigSchoolContext();
+            ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var ListAttendances = con.Attendances.Where(p => p.Attendee == currentUser.Id).ToList();
+            var courses = new List<Course>();
+            foreach (Attendance temp in ListAttendances)
+            {
+                Course objCourse = temp.Course;
+                objCourse.LecturerName = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(objCourse.LectureId).Name;
+                courses.Add(objCourse);
+            }
+            return View(courses);
+        }
+
 
         public ActionResult Mine()
         {
-            BigSchoolDB con = new BigSchoolDB();
+            BigSchoolContext con = new BigSchoolContext();
             ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var courses = con.Courses.Where(c => c.LecturerId == currentUser.Id && c.DateTime > DateTime.Now).ToList();
-
-            foreach (Course i in courses)
+            var courses = con.Courses.Where(c =>c.LectureId == currentUser.Id && c.Datetime > DateTime.Now).ToList();
+           
+            foreach (Course i in courses )
             {
-                i.LectureName = currentUser.Name;
+                i.LecturerName = currentUser.Name;
             }
             return View(courses);
         }

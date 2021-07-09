@@ -1,4 +1,4 @@
-﻿using BigSchool.Models;
+using BigSchool.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,6 +17,7 @@ namespace BigSchool
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             Database.SetInitializer<ApplicationDbContext>(null);
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
