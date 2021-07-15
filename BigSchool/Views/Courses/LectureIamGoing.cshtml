@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<BigSchool.Models.Course>
 
 @{
-    ViewBag.Title = "Attending";
+    ViewBag.Title = "LectureIamGoing";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Attending</h2>
+<h2>Following</h2>
 
 <div class="row">
     <ul class="course">
@@ -21,17 +21,13 @@
                     </div>
                 </div>
                 <div class="details">
-                    <span class="lecture">
-                        @course.LecturedName
-                    </span>
-                    <div>
-                        <span class="category">
-                            @course.Category.Name
-                        </span>
-                       
-                    </div>
-
+                    <span class="lecture">@course.LecturedName</span>
+                    <br />
+                    <span class="category">@course.Category.Name</span>
                 </div>
             </li>
         }
     </ul>
+</div>
+
+</table>

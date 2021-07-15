@@ -21,6 +21,8 @@ namespace BigSchool.Models
         [StringLength(128)]
         public string LectureId { get; set; }
 
+        public string Name;
+
         [Required]
         [StringLength(255)]
         public string Place { get; set; }
@@ -34,8 +36,11 @@ namespace BigSchool.Models
 
         public virtual Category Category { get; set; }
 
-        public List<Category> ListCategory = new List<Category>();
-        public string Name;
-        public string LecturerName;
+        public List<Category> listCategory = new List<Category>();
+        public string LecturedName;
+
+        public bool isLogin = false;
+        public bool isShowGoing = false;
+        public bool isShowFollow = false;
     }
 }
